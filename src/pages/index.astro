@@ -3,148 +3,271 @@ import Layout from '../layouts/Layout.astro';
 
 const propuestas = [
   { icon: '💼', titulo: 'Trabajar tiene que alcanzar', texto: 'Reforma fiscal provincial para que el que produce se quede con lo que genera.', href: '/propuestas/trabajo' },
-  { icon: '🏥', titulo: 'Salud cerca de casa', texto: 'Guardia 24/7 en centros regionales. Telemedicina. Menos burocracia, más prestaciones.', href: '/propuestas/salud' },
   { icon: '📚', titulo: 'Aulas que funcionan', texto: 'Internet en escuelas rurales. Docentes valorados. Mérito, no política.', href: '/propuestas/educacion' },
   { icon: '🛡️', titulo: 'Barrios donde se puede salir', texto: 'Policía de cercanía, prevención y justicia que funciona.', href: '/propuestas/seguridad' },
-  { icon: '🌿', titulo: 'Río Negro tiene todo', texto: 'Solo le falta libertad para usarlo. Menos trabas. Más trabajo.', href: '/propuestas/produccion' },
+  { icon: '🌿', titulo: 'Río Negro tiene todo', texto: 'Solo le falta libertad para usarlo bien. Menos trabas. Más trabajo.', href: '/propuestas/ambiente' },
+  { icon: '💰', titulo: 'Menos Estado en tu bolsillo', texto: 'Reducción de Ingresos Brutos. Ventanilla única. Gasto público transparente.', href: '/propuestas/economia' },
   { icon: '🏛️', titulo: 'No le debemos nada a nadie', texto: 'Independientes de verdad. Nadie nos compró. Nadie nos puede pedir favores.', href: '/propuestas/instituciones' },
 ];
 ---
 
-<Layout title="Nico Suárez Colman · IMPULSO Río Negro" description="Presidente de IMPULSO Río Negro. Liberal, rionegrino, abogado. Propuestas para la provincia.">
+<Layout title="Nico Suárez Colman · IMPULSO Río Negro" description="Presidente de IMPULSO Río Negro. Liberal, rionegrino, abogado. Propuestas concretas para la provincia.">
 
-  <!-- HERO -->
-  <section class="relative min-h-[580px] flex items-center overflow-hidden"
-           style="background: linear-gradient(135deg, #4e1a60 0%, #6A287F 60%, #8b35a8 100%)">
-    <div class="absolute inset-0 opacity-[0.04]"
-         style="background-image: repeating-linear-gradient(45deg, white 0px, white 1px, transparent 1px, transparent 40px)">
-    </div>
-    <div class="absolute right-0 top-0 w-1.5 h-full bg-[#F97B00]"></div>
+<style>
+  /* Hero animated gradient */
+  @keyframes heroGrad {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .hero-bg {
+    background: linear-gradient(-45deg, #2a0d3a, #6A287F, #3d1550, #7b2e9b, #4e1a60);
+    background-size: 350% 350%;
+    animation: heroGrad 12s ease infinite;
+  }
 
-    <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-      <div>
-        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6">
-          <span class="w-1.5 h-1.5 rounded-full bg-[#F97B00]"></span>
-          <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-white/90">Presidente · Impulso Río Negro</span>
-        </div>
-        <h1 class="font-montserrat font-black text-5xl md:text-6xl text-white uppercase leading-[1.05] tracking-tight mb-5">
-          Río Negro<br>toma <span class="text-[#F97B00]">impulso.</span>
-        </h1>
-        <p class="text-white/80 text-lg leading-relaxed mb-8 max-w-lg">
-          Soy de los que no se resignan. Por eso construimos IMPULSO Río Negro: para que el cambio sea nuestro, acá en la provincia.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="/sumate"
-             class="font-montserrat font-black text-[13px] uppercase tracking-widest bg-[#F97B00] hover:bg-orange-600 text-white px-8 py-4 rounded transition-colors">
-            Sumate
-          </a>
-          <a href="https://impulsorionegro.ar" target="_blank" rel="noopener"
-             class="font-montserrat font-bold text-[12px] uppercase tracking-wider border-2 border-white/50 hover:border-white hover:bg-white/10 text-white px-7 py-3.5 rounded transition-colors">
-            Conocé el partido ↗
-          </a>
-        </div>
+  /* Floating decorative elements */
+  @keyframes floatA {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(-18px) rotate(2deg); }
+  }
+  @keyframes floatB {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(-12px) rotate(-1.5deg); }
+  }
+  .float-a { animation: floatA 8s ease-in-out infinite; }
+  .float-b { animation: floatB 11s ease-in-out infinite 2s; }
+  .float-c { animation: floatA 14s ease-in-out infinite 4s; }
+
+  /* Hero content entrance */
+  @keyframes heroUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .ha1 { animation: heroUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s both; }
+  .ha2 { animation: heroUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.28s both; }
+  .ha3 { animation: heroUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.46s both; }
+  .ha4 { animation: heroUp 0.7s cubic-bezier(0.22,1,0.36,1) 0.64s both; }
+  .ha5 { animation: heroUp 0.8s cubic-bezier(0.22,1,0.36,1) 0.35s both; }
+
+  /* Marquee */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-inner {
+    display: inline-flex;
+    animation: marquee 28s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-inner:hover { animation-play-state: paused; }
+
+  /* Card hover */
+  .prop-card {
+    transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),
+                box-shadow 0.35s ease,
+                border-top-color 0.25s ease;
+  }
+  .prop-card:hover {
+    transform: translateY(-7px) scale(1.01);
+    box-shadow: 0 24px 48px rgba(106,40,127,0.14);
+    border-top-color: #6A287F !important;
+  }
+  .prop-icon {
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+  .prop-card:hover .prop-icon { transform: scale(1.15) rotate(-3deg); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-bg { animation: none; background: #6A287F; }
+    .float-a, .float-b, .float-c, .marquee-inner { animation: none; }
+    .ha1,.ha2,.ha3,.ha4,.ha5 { animation: none; opacity:1; transform:none; }
+  }
+</style>
+
+<!-- ═══════════════════════════════════════ HERO ═══ -->
+<section class="hero-bg relative min-h-[620px] flex items-center overflow-hidden">
+
+  <!-- Floating decorative rings -->
+  <div class="float-a absolute top-10 right-8 w-[400px] h-[400px] rounded-full border border-white/[0.06] pointer-events-none"></div>
+  <div class="float-b absolute top-28 right-36 w-60 h-60 rounded-full border border-white/[0.09] pointer-events-none"></div>
+  <div class="float-c absolute -bottom-16 right-0 w-80 h-80 rounded-full bg-[#F97B00]/[0.04] pointer-events-none"></div>
+  <div class="float-b absolute bottom-12 left-16 w-48 h-48 rounded-full border border-[#55A3B2]/[0.08] pointer-events-none"></div>
+
+  <!-- Geometric grid overlay -->
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
+       style="background-image: repeating-linear-gradient(45deg, white 0px, white 1px, transparent 1px, transparent 48px)"></div>
+
+  <!-- Orange accent bar right -->
+  <div class="absolute right-0 top-0 w-1.5 h-full bg-[#F97B00]"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+    <!-- Left: texto -->
+    <div>
+      <div class="ha1 inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6">
+        <span class="w-2 h-2 rounded-full bg-[#F97B00] animate-pulse"></span>
+        <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-white/90">Presidente · Impulso Río Negro</span>
       </div>
 
-      <div class="hidden md:flex justify-center items-end">
-        <div class="w-72 h-96 rounded-t-lg border-2 border-white/15 bg-white/8 flex flex-col items-center justify-center gap-3 text-white/40 text-center px-6 relative">
-          <span class="text-5xl opacity-40">📷</span>
+      <h1 class="ha2 font-montserrat font-black text-5xl md:text-6xl text-white uppercase leading-[1.05] tracking-tight mb-5">
+        Río Negro<br>toma <span class="text-[#F97B00]">impulso.</span>
+      </h1>
+
+      <p class="ha3 text-white/75 text-lg leading-relaxed mb-8 max-w-lg">
+        Soy de los que no se resignan. Por eso construimos IMPULSO Río Negro: para que el cambio sea nuestro, acá en la provincia.
+      </p>
+
+      <div class="ha4 flex flex-wrap gap-4">
+        <a href="/sumate"
+           class="font-montserrat font-black text-[13px] uppercase tracking-widest bg-[#F97B00] hover:bg-orange-500 text-white px-8 py-4 rounded transition-all shadow-lg shadow-orange-900/30 hover:shadow-orange-900/50 hover:-translate-y-0.5">
+          Sumate
+        </a>
+        <a href="https://impulsorionegro.ar" target="_blank" rel="noopener"
+           class="font-montserrat font-bold text-[12px] uppercase tracking-wider border-2 border-white/40 hover:border-white hover:bg-white/10 text-white px-7 py-3.5 rounded transition-all">
+          Conocé el partido ↗
+        </a>
+      </div>
+    </div>
+
+    <!-- Right: foto placeholder -->
+    <div class="ha5 hidden md:flex justify-center items-end">
+      <div class="relative w-72 h-[400px]">
+        <div class="w-full h-full rounded-t-2xl rounded-br-2xl border border-white/15 bg-white/[0.05] backdrop-blur-sm flex flex-col items-center justify-center gap-3 text-white/40 text-center px-6">
+          <span class="text-5xl opacity-30">📷</span>
           <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest">Foto de Nico</span>
-          <span class="text-[11px] leading-relaxed opacity-70">Al aire libre · mirando a cámara · contexto rionegrino</span>
-          <div class="absolute bottom-0 left-0 right-0 h-1" style="background:linear-gradient(90deg,#6A287F,#F97B00)"></div>
+          <span class="text-[11px] leading-relaxed opacity-60">Al aire libre · mirando a cámara<br>contexto rionegrino</span>
         </div>
+        <!-- Gradient bar bottom -->
+        <div class="absolute bottom-0 left-0 right-0 h-1 rounded-b" style="background:linear-gradient(90deg,#6A287F,#F97B00,#55A3B2)"></div>
+        <!-- Corner accent -->
+        <div class="absolute -bottom-4 -right-4 w-20 h-20 rounded-full bg-[#F97B00]/15 border border-[#F97B00]/25"></div>
+        <div class="absolute -top-4 -left-4 w-14 h-14 rounded-full border border-[#55A3B2]/20"></div>
       </div>
     </div>
-  </section>
 
-  <!-- FRASE -->
-  <div class="bg-[#6A287F] py-10 px-6 text-center">
-    <blockquote class="font-montserrat font-black text-2xl md:text-3xl text-white max-w-3xl mx-auto leading-snug tracking-tight">
-      "Sin compromisos viejos. Sin deudas políticas.<br>
-      <span class="text-[#F97B00]">Liberal de acá.</span> Eso somos."
-    </blockquote>
   </div>
+</section>
 
-  <!-- PROPUESTAS -->
-  <section class="py-20 px-6">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-14">
-        <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] block mb-3">Propuestas</span>
-        <h2 class="font-montserrat font-black text-4xl text-[#6A287F] uppercase tracking-tight">Lo que necesita Río Negro</h2>
-        <p class="text-gray-500 mt-3 max-w-xl mx-auto">Lo que Río Negro necesita, lo sabemos los que vivimos en Río Negro.</p>
+<!-- ═══════════════════════════════════════ MARQUEE ═══ -->
+<div class="bg-[#F97B00] py-3 overflow-hidden select-none">
+  <div class="marquee-inner">
+    <span class="font-montserrat font-black text-[10px] uppercase tracking-[0.18em] text-white/90 px-2">
+      Libertad <span class="text-white/40 mx-4">·</span> Transparencia <span class="text-white/40 mx-4">·</span> Río Negro <span class="text-white/40 mx-4">·</span> Sin aparato <span class="text-white/40 mx-4">·</span> Sin deudas políticas <span class="text-white/40 mx-4">·</span> Liberal de acá <span class="text-white/40 mx-4">·</span> Trabajo <span class="text-white/40 mx-4">·</span> Independencia <span class="text-white/40 mx-4">·</span> Impulso <span class="text-white/40 mx-4">·</span>
+    </span>
+    <span class="font-montserrat font-black text-[10px] uppercase tracking-[0.18em] text-white/90 px-2" aria-hidden="true">
+      Libertad <span class="text-white/40 mx-4">·</span> Transparencia <span class="text-white/40 mx-4">·</span> Río Negro <span class="text-white/40 mx-4">·</span> Sin aparato <span class="text-white/40 mx-4">·</span> Sin deudas políticas <span class="text-white/40 mx-4">·</span> Liberal de acá <span class="text-white/40 mx-4">·</span> Trabajo <span class="text-white/40 mx-4">·</span> Independencia <span class="text-white/40 mx-4">·</span> Impulso <span class="text-white/40 mx-4">·</span>
+    </span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ FRASE ═══ -->
+<div class="bg-[#6A287F] py-14 px-6 text-center">
+  <blockquote class="font-montserrat font-black text-2xl md:text-3xl text-white max-w-3xl mx-auto leading-snug tracking-tight">
+    "Sin compromisos viejos. Sin deudas políticas.<br>
+    <span class="text-[#F97B00]">Liberal de acá.</span> Eso somos."
+  </blockquote>
+</div>
+
+<!-- ═══════════════════════════════════════ PROPUESTAS ═══ -->
+<section class="py-24 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="text-center mb-16 reveal">
+      <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] block mb-3">Propuestas</span>
+      <h2 class="font-montserrat font-black text-4xl md:text-5xl text-[#6A287F] uppercase tracking-tight">Lo que necesita<br>Río Negro</h2>
+      <p class="text-gray-400 mt-4 max-w-lg mx-auto">Lo que Río Negro necesita, lo sabemos los que vivimos en Río Negro.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 stagger-children">
+      {propuestas.map(p => (
+        <a href={p.href}
+           class="prop-card group block bg-white border border-gray-100 border-t-4 border-t-transparent rounded-xl p-7 no-underline shadow-sm">
+          <div class="prop-icon w-12 h-12 rounded-xl bg-[#ede1f2] flex items-center justify-center text-2xl mb-5">{p.icon}</div>
+          <h3 class="font-montserrat font-black text-[13px] uppercase tracking-wide text-[#6A287F] mb-2 leading-snug">{p.titulo}</h3>
+          <p class="text-gray-400 text-sm leading-relaxed">{p.texto}</p>
+          <span class="inline-block mt-4 font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#55A3B2] group-hover:text-[#6A287F] transition-colors">Ver más →</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center mt-12 reveal">
+      <a href="/propuestas"
+         class="font-montserrat font-bold text-[12px] uppercase tracking-widest text-[#6A287F] border-2 border-[#6A287F] hover:bg-[#6A287F] hover:text-white px-10 py-3.5 rounded transition-all">
+        Ver todas las propuestas
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SOBRE NICO ═══ -->
+<section class="bg-gray-50 py-24 px-6">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+
+    <div class="reveal relative">
+      <div class="w-full aspect-[4/5] rounded-2xl bg-[#ede1f2] border-2 border-dashed border-[#6A287F]/25 flex flex-col items-center justify-center gap-3 text-[#6A287F]">
+        <span class="text-6xl opacity-30">🧑‍⚖️</span>
+        <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest opacity-50">Foto de Nico</span>
+        <span class="text-xs opacity-40 text-center max-w-[180px]">Con gente, en recorrida, contexto rionegrino</span>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {propuestas.map(p => (
-          <a href={p.href}
-             class="group block bg-white border border-gray-200 rounded-xl p-7 hover:shadow-lg hover:-translate-y-1 transition-all border-t-4 border-t-transparent hover:border-t-[#6A287F] no-underline">
-            <div class="w-11 h-11 rounded-lg bg-[#ede1f2] flex items-center justify-center text-xl mb-4">{p.icon}</div>
-            <h3 class="font-montserrat font-black text-[14px] uppercase tracking-wide text-[#6A287F] mb-2 leading-snug">{p.titulo}</h3>
-            <p class="text-gray-500 text-sm leading-relaxed">{p.texto}</p>
-          </a>
+      <div class="absolute -bottom-5 -right-5 bg-[#F97B00] text-white font-montserrat font-black text-[11px] uppercase tracking-wider px-5 py-3 rounded-lg shadow-lg shadow-orange-200">
+        Presidente · IMPULSO RN
+      </div>
+    </div>
+
+    <div class="reveal">
+      <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] block mb-3">Conoceme</span>
+      <h2 class="font-montserrat font-black text-4xl text-[#6A287F] uppercase tracking-tight mb-6">Quién soy</h2>
+      <p class="text-gray-600 leading-relaxed mb-4">Soy Nico Suárez Colman. Abogado, rionegrino, 37 años.</p>
+      <p class="text-gray-600 leading-relaxed mb-4">Nací y crecí en General Roca. Trabajé de mozo, de repartidor, de gastronómico — antes de dedicarme al derecho. Mis viejos tenían dos trabajos para darme la oportunidad de estudiar.</p>
+      <p class="text-gray-600 leading-relaxed mb-8">Fundé IMPULSO Río Negro. Ganamos la personería. Construimos este espacio desde cero, sin aparato y sin deudas.</p>
+
+      <div class="grid grid-cols-2 gap-3 mb-8">
+        {[
+          ['Ubicación', 'General Roca, Río Negro'],
+          ['Profesión', 'Abogado — UNLP + UNCo'],
+          ['Cargo', 'Presidente IMPULSO RN'],
+          ['Edad', '37 años'],
+        ].map(([label, val]) => (
+          <div class="bg-white p-4 rounded-xl border-l-4 border-[#55A3B2] shadow-sm">
+            <span class="font-montserrat font-bold text-[10px] uppercase tracking-widest text-[#55A3B2] block mb-0.5">{label}</span>
+            <span class="text-sm font-semibold text-[#0E0B12]">{val}</span>
+          </div>
         ))}
       </div>
-      <div class="text-center mt-10">
-        <a href="/propuestas"
-           class="font-montserrat font-bold text-[12px] uppercase tracking-widest text-[#6A287F] border-2 border-[#6A287F] hover:bg-[#6A287F] hover:text-white px-8 py-3 rounded transition-colors">
-          Ver todas las propuestas
-        </a>
-      </div>
+
+      <a href="/conoceme"
+         class="font-montserrat font-bold text-[12px] uppercase tracking-widest text-white bg-[#6A287F] hover:bg-[#4e1a60] px-8 py-3.5 rounded transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5">
+        Leer más
+      </a>
     </div>
-  </section>
 
-  <!-- SOBRE NICO -->
-  <section class="bg-gray-50 py-20 px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-      <div class="relative">
-        <div class="w-full aspect-[4/5] rounded-xl bg-[#ede1f2] border-2 border-dashed border-[#6A287F]/30 flex flex-col items-center justify-center gap-3 text-[#6A287F]">
-          <span class="text-6xl opacity-40">🧑‍⚖️</span>
-          <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest opacity-60">Foto de Nico</span>
-          <span class="text-xs opacity-50 text-center max-w-[180px]">Con gente, en recorrida, contexto rionegrino</span>
-        </div>
-        <div class="absolute -bottom-4 -right-4 bg-[#F97B00] text-white font-montserrat font-black text-[11px] uppercase tracking-wider px-5 py-3 rounded shadow-lg">
-          Presidente · IMPULSO RN
-        </div>
-      </div>
+  </div>
+</section>
 
-      <div>
-        <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] block mb-3">Conoceme</span>
-        <h2 class="font-montserrat font-black text-4xl text-[#6A287F] uppercase tracking-tight mb-6">Quién soy</h2>
-        <p class="text-gray-600 leading-relaxed mb-4">Soy Nico Suárez Colman. Abogado, rionegrino, 37 años.</p>
-        <p class="text-gray-600 leading-relaxed mb-4">Nací y crecí en General Roca. Trabajé de mozo, de repartidor, de gastronómico — antes de dedicarme al derecho. Mis viejos tenían dos trabajos para darme la oportunidad de estudiar.</p>
-        <p class="text-gray-600 leading-relaxed mb-8">Fundé IMPULSO Río Negro. Ganamos la personería. Construimos este espacio desde cero, sin aparato y sin deudas. Ahora vamos por la Legislatura.</p>
-        <div class="grid grid-cols-2 gap-3 mb-8">
-          {[
-            ['Ubicación', 'General Roca, Río Negro'],
-            ['Profesión', 'Abogado — UNLP + UNCo'],
-            ['Cargo', 'Presidente IMPULSO RN'],
-            ['Edad', '37 años'],
-          ].map(([label, val]) => (
-            <div class="bg-white p-3 rounded-lg border-l-4 border-[#55A3B2]">
-              <span class="font-montserrat font-bold text-[10px] uppercase tracking-widest text-[#55A3B2] block">{label}</span>
-              <span class="text-sm font-semibold text-[#0E0B12]">{val}</span>
-            </div>
-          ))}
-        </div>
-        <a href="/conoceme"
-           class="font-montserrat font-bold text-[12px] uppercase tracking-widest text-white bg-[#6A287F] hover:bg-[#4e1a60] px-8 py-3 rounded transition-colors">
-          Leer más
-        </a>
-      </div>
-    </div>
-  </section>
+<!-- ═══════════════════════════════════════ CTA OSCURO ═══ -->
+<div class="relative overflow-hidden py-24 px-6 text-center reveal"
+     style="background: linear-gradient(135deg, #0E0B12 0%, #1a0f20 100%)">
+  <div class="absolute top-0 left-0 right-0 h-1" style="background:linear-gradient(90deg,#6A287F,#F97B00,#55A3B2)"></div>
+  <!-- Decorative large text -->
+  <div class="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
+    <span class="font-montserrat font-black text-[220px] leading-none text-white/[0.025] uppercase select-none">RN</span>
+  </div>
+  <!-- Floating rings -->
+  <div class="absolute top-6 left-10 w-40 h-40 rounded-full border border-[#6A287F]/20 float-a pointer-events-none"></div>
+  <div class="absolute bottom-6 right-10 w-32 h-32 rounded-full border border-[#F97B00]/15 float-b pointer-events-none"></div>
 
-  <!-- TAGLINE OSCURO -->
-  <div class="relative overflow-hidden py-16 px-6 text-center"
-       style="background: linear-gradient(135deg, #0E0B12 0%, #1a0f20 100%)">
-    <div class="absolute top-0 left-0 right-0 h-1"
-         style="background: linear-gradient(90deg, #6A287F, #F97B00, #55A3B2)"></div>
-    <h2 class="font-montserrat font-black text-4xl md:text-5xl text-white uppercase tracking-tight mb-2">
+  <div class="relative z-10">
+    <h2 class="font-montserrat font-black text-4xl md:text-5xl text-white uppercase tracking-tight mb-3">
       Río Negro necesita un <span class="text-[#F97B00]">impulso.</span>
     </h2>
-    <p class="text-white/50 mb-8">IMPULSO Río Negro puede darlo.</p>
+    <p class="text-white/40 mb-10 text-lg">IMPULSO Río Negro puede darlo.</p>
     <a href="/sumate"
-       class="font-montserrat font-black text-[13px] uppercase tracking-widest bg-[#F97B00] hover:bg-orange-600 text-white px-10 py-4 rounded transition-colors">
+       class="font-montserrat font-black text-[13px] uppercase tracking-widest bg-[#F97B00] hover:bg-orange-500 text-white px-12 py-4 rounded transition-all shadow-lg shadow-orange-900/40 hover:-translate-y-0.5">
       Sumate al partido
     </a>
   </div>
+</div>
 
 </Layout>
