@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const todas = await getCollection('columnas');
+const columnas = todas.sort((a, b) => b.data.fecha.valueOf() - a.data.fecha.valueOf());
+
+function formatFecha(d: Date) {
+  return d.toLocaleDateString('es-AR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<Layout title="Columnas — Nicolás Suárez Colman" description="Artículos y columnas de opinión de Nicolás Suárez Colman sobre política, economía y sociedad rionegrina.">
+
+  <div class="bg-[#6A287F] py-14 px-6">
+    <div class="max-w-4xl mx-auto">
+      <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] block mb-3">Ideas</span>
+      <h1 class="font-montserrat font-black text-5xl text-white uppercase tracking-tight">Columnas</h1>
+      <p class="text-white/60 mt-3 max-w-xl">Textos propios y artículos que valen la pena leer.</p>
+    </div>
+  </div>
+  <div class="h-1 w-full" style="background:linear-gradient(90deg,#6A287F,#F97B00,#55A3B2)"></div>
+
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto space-y-5">
+
+      {columnas.length === 0 && (
+        <p class="text-gray-400 text-center py-20">Próximamente.</p>
+      )}
+
+      {columnas.map(col => col.data.tipo === 'enlace' ? (
+        <a href={col.data.url} target="_blank" rel="noopener noreferrer"
+           class="group flex gap-5 bg-white border border-gray-100 rounded-xl p-6 hover:shadow-md transition-all hover:-translate-y-0.5 no-underline block">
+          <div class="flex gap-5">
+            <div class="shrink-0 w-1 self-stretch rounded-full bg-[#55A3B2]"></div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-3 mb-2 flex-wrap">
+                <span class="font-montserrat font-bold text-[10px] uppercase tracking-widest text-[#55A3B2]">{col.data.fuente ?? 'Enlace externo'}</span>
+                <span class="text-gray-200">·</span>
+                <span class="font-montserrat text-[10px] text-gray-400">{formatFecha(col.data.fecha)}</span>
+                <span class="ml-auto font-montserrat font-bold text-[10px] text-[#55A3B2] opacity-0 group-hover:opacity-100 transition-opacity">↗ abrir</span>
+              </div>
+              <h2 class="font-montserrat font-black text-[15px] uppercase tracking-tight text-[#0E0B12] leading-snug mb-2 group-hover:text-[#55A3B2] transition-colors">{col.data.titulo}</h2>
+              <p class="text-gray-500 text-sm leading-relaxed">{col.data.descripcion}</p>
+            </div>
+          </div>
+        </a>
+      ) : (
+        <a href={`/columnas/${col.id}`}
+           class="group flex gap-5 bg-white border border-gray-100 rounded-xl p-6 hover:shadow-md transition-all hover:-translate-y-0.5 no-underline block">
+          <div class="flex gap-5">
+            <div class="shrink-0 w-1 self-stretch rounded-full bg-[#6A287F]"></div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-3 mb-2 flex-wrap">
+                <span class="font-montserrat font-bold text-[10px] uppercase tracking-widest text-[#6A287F]">Columna propia</span>
+                <span class="text-gray-200">·</span>
+                <span class="font-montserrat text-[10px] text-gray-400">{formatFecha(col.data.fecha)}</span>
+              </div>
+              <h2 class="font-montserrat font-black text-[15px] uppercase tracking-tight text-[#0E0B12] leading-snug mb-2 group-hover:text-[#6A287F] transition-colors">{col.data.titulo}</h2>
+              <p class="text-gray-500 text-sm leading-relaxed">{col.data.descripcion}</p>
+              <span class="inline-block mt-3 font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#6A287F] opacity-0 group-hover:opacity-100 transition-opacity">Leer completo →</span>
+            </div>
+          </div>
+        </a>
+      ))}
+
+    </div>
+  </section>
+
+</Layout>
