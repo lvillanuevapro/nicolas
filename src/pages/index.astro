@@ -1,14 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { Briefcase, BookOpen, Shield, Leaf, Wallet, Landmark } from 'lucide-astro';
 
 const propuestas = [
-  { Icon: Briefcase,  categoria: 'Trabajo',        accent: '#F97B00', titulo: 'Trabajar tiene que alcanzar',  texto: 'Reforma fiscal provincial para que el que produce se quede con lo que genera.', href: '/propuestas/trabajo' },
-  { Icon: BookOpen,   categoria: 'Educación',       accent: '#6A287F', titulo: 'Aulas que funcionan',          texto: 'Internet en escuelas rurales. Docentes valorados. Mérito, no política.',         href: '/propuestas/educacion' },
-  { Icon: Shield,     categoria: 'Seguridad',       accent: '#55A3B2', titulo: 'Barrios donde se puede salir', texto: 'Policía de cercanía, prevención y justicia que funciona.',                       href: '/propuestas/seguridad' },
-  { Icon: Leaf,       categoria: 'Desarrollo',      accent: '#55A3B2', titulo: 'Río Negro tiene todo',         texto: 'Solo le falta libertad para usarlo bien. Menos trabas. Más trabajo.',             href: '/propuestas/ambiente' },
-  { Icon: Wallet,     categoria: 'Economía',        accent: '#F97B00', titulo: 'Menos Estado en tu bolsillo',  texto: 'Reducción de Ingresos Brutos. Ventanilla única. Gasto público transparente.',     href: '/propuestas/economia' },
-  { Icon: Landmark,   categoria: 'Instituciones',   accent: '#6A287F', titulo: 'No le debemos nada a nadie',  texto: 'Independientes de verdad. Nadie nos compró. Nadie nos puede pedir favores.',      href: '/propuestas/instituciones' },
+  { categoria: 'Trabajo',      accent: '#F97B00', titulo: 'Trabajar tiene que alcanzar',  texto: 'Reforma fiscal provincial para que el que produce se quede con lo que genera.', href: '/propuestas/trabajo' },
+  { categoria: 'Educación',    accent: '#6A287F', titulo: 'Aulas que funcionan',          texto: 'Internet en escuelas rurales. Docentes valorados. Mérito, no política.',         href: '/propuestas/educacion' },
+  { categoria: 'Seguridad',    accent: '#55A3B2', titulo: 'Barrios donde se puede salir', texto: 'Policía de cercanía, prevención y justicia que funciona.',                       href: '/propuestas/seguridad' },
+  { categoria: 'Desarrollo',   accent: '#55A3B2', titulo: 'Río Negro tiene todo',         texto: 'Solo le falta libertad para usarlo bien. Menos trabas. Más trabajo.',             href: '/propuestas/ambiente' },
+  { categoria: 'Economía',     accent: '#F97B00', titulo: 'Menos Estado en tu bolsillo',  texto: 'Reducción de Ingresos Brutos. Ventanilla única. Gasto público transparente.',     href: '/propuestas/economia' },
+  { categoria: 'Instituciones',accent: '#6A287F', titulo: 'No le debemos nada a nadie',   texto: 'Independientes de verdad. Nadie nos compró. Nadie nos puede pedir favores.',      href: '/propuestas/instituciones' },
 ];
 ---
 
@@ -186,11 +185,8 @@ const propuestas = [
            class="prop-card group block bg-white border border-gray-100 rounded-xl no-underline shadow-sm overflow-hidden"
            style={`border-top: 3px solid ${p.accent}`}>
           <div class="p-7">
-            <span class="font-montserrat font-bold text-[10px] uppercase tracking-widest mb-4 block" style={`color: ${p.accent}`}>{p.categoria}</span>
-            <div class="prop-icon w-10 h-10 rounded-lg flex items-center justify-center mb-4" style={`background: ${p.accent}18; color: ${p.accent}`}>
-              <p.Icon size={20} strokeWidth={1.75} />
-            </div>
-            <h3 class="font-montserrat font-black text-[15px] uppercase tracking-tight text-[#0E0B12] mb-3 leading-snug group-hover:text-[#6A287F] transition-colors">{p.titulo}</h3>
+            <span class="font-montserrat font-bold text-[10px] uppercase tracking-widest mb-5 block" style={`color: ${p.accent}`}>{p.categoria}</span>
+            <h3 class="font-montserrat font-black text-[16px] uppercase tracking-tight text-[#0E0B12] mb-3 leading-snug group-hover:text-[#6A287F] transition-colors">{p.titulo}</h3>
             <p class="text-gray-400 text-sm leading-relaxed">{p.texto}</p>
             <span class="inline-block mt-5 font-montserrat font-bold text-[11px] uppercase tracking-widest text-gray-300 group-hover:text-[#6A287F] transition-colors">Ver propuesta →</span>
           </div>
@@ -250,6 +246,34 @@ const propuestas = [
       </a>
     </div>
 
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ SECCIÓN IMPULSO ═══ -->
+<section class="bg-[#0E0B12] py-20 px-6 reveal">
+  <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
+    <div>
+      <img src="/logo-impulso-dark.jpg" alt="IMPULSO Río Negro" class="h-20 w-auto mb-8" />
+      <p class="text-white/60 leading-relaxed mb-6">
+        IMPULSO Río Negro es el partido que fundamos desde cero. Sin aparato. Sin deudas. Un espacio liberal con identidad patagónica genuina — no somos una sucursal de Buenos Aires.
+      </p>
+      <a href="https://impulsorionegro.ar" target="_blank" rel="noopener"
+         class="font-montserrat font-black text-[12px] uppercase tracking-widest border-2 border-white/30 hover:border-white text-white px-8 py-3 rounded transition-colors">
+        impulsorionegro.ar ↗
+      </a>
+    </div>
+    <div class="space-y-4">
+      {[
+        ['Partido constituido', 'Personería obtenida. Estructura real.'],
+        ['Liberal y provincial', 'Las dos cosas. El cuadrante vacante en Río Negro.'],
+        ['Sin compromisos', 'Nadie nos compró. Nadie nos puede pedir favores.'],
+      ].map(([titulo, desc]) => (
+        <div class="border-l-2 border-[#6A287F] pl-5 py-1">
+          <div class="font-montserrat font-black text-[12px] uppercase tracking-wide text-white mb-1">{titulo}</div>
+          <div class="text-white/50 text-sm">{desc}</div>
+        </div>
+      ))}
+    </div>
   </div>
 </section>
 

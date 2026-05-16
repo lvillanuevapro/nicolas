@@ -1,23 +1,23 @@
 ---
 const nav = [
-  { label: 'Inicio',      href: '/' },
-  { label: 'Conoceme',    href: '/conoceme' },
-  { label: 'Propuestas',  href: '/propuestas' },
-  { label: 'Columnas',    href: '/columnas' },
-  { label: 'Prensa',      href: '/prensa' },
+  { label: 'Inicio',     href: '/' },
+  { label: 'Conoceme',   href: '/conoceme' },
+  { label: 'Propuestas', href: '/propuestas' },
+  { label: 'Columnas',   href: '/columnas' },
+  { label: 'Prensa',     href: '/prensa' },
 ];
 const current = Astro.url.pathname;
 ---
 
-<header class="sticky top-0 z-50 bg-white border-b-2 border-[#6A287F] shadow-sm">
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
   <div class="max-w-6xl mx-auto px-6 flex items-center justify-between h-[68px]">
 
-    <!-- Logo -->
+    <!-- Lockup co-firmado: logo partido + persona -->
     <a href="/" class="flex items-center gap-3 no-underline">
-      <img src="/logo-impulso.jpg" alt="IMPULSO Río Negro" class="h-10 w-auto" />
-      <div class="leading-tight">
-        <div class="font-montserrat font-bold text-[13px] uppercase tracking-wide text-[#0E0B12]">Nico Suárez Colman</div>
-        <div class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#6A287F]">Impulso Río Negro</div>
+      <img src="/logo-impulso.jpg" alt="IMPULSO Río Negro" class="h-9 w-auto" />
+      <div class="border-l border-gray-200 pl-3 leading-tight">
+        <div class="font-montserrat font-black text-[14px] uppercase tracking-tight text-[#0E0B12]">Nicolás Suárez Colman</div>
+        <div class="font-montserrat font-bold text-[10px] uppercase tracking-widest text-[#6A287F]">Presidente · IMPULSO Río Negro</div>
       </div>
     </a>
 
@@ -37,16 +37,8 @@ const current = Astro.url.pathname;
         </a>
       ))}
       <a
-        href="https://impulsorionegro.ar"
-        target="_blank"
-        rel="noopener"
-        class="font-montserrat font-bold text-[12px] uppercase tracking-wider px-4 py-2 rounded bg-[#6A287F] text-white hover:bg-[#4e1a60] transition-colors ml-1"
-      >
-        Impulso RN ↗
-      </a>
-      <a
         href="/sumate"
-        class="font-montserrat font-bold text-[12px] uppercase tracking-wider px-4 py-2 rounded bg-[#F97B00] text-white hover:bg-orange-600 transition-colors ml-1"
+        class="font-montserrat font-black text-[12px] uppercase tracking-wider px-5 py-2 rounded bg-[#F97B00] text-white hover:bg-orange-600 transition-colors ml-2"
       >
         Sumate
       </a>
@@ -70,8 +62,7 @@ const current = Astro.url.pathname;
         {item.label}
       </a>
     ))}
-    <a href="https://impulsorionegro.ar" target="_blank" class="block font-montserrat font-bold text-[13px] uppercase tracking-wider py-3 border-b border-gray-100 text-[#6A287F]">Impulso RN ↗</a>
-    <a href="/sumate" class="mt-3 block text-center font-montserrat font-bold text-[13px] uppercase tracking-wider py-3 rounded bg-[#F97B00] text-white">Sumate</a>
+    <a href="/sumate" class="mt-3 block text-center font-montserrat font-black text-[13px] uppercase tracking-wider py-3 rounded bg-[#F97B00] text-white">Sumate</a>
   </div>
 </header>
 
