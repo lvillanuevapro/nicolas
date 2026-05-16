@@ -19,8 +19,7 @@ const next = idx < propuestas.length - 1 ? propuestas[idx + 1] : null;
 
   <div class="bg-[#6A287F] py-14 px-6">
     <div class="max-w-4xl mx-auto">
-      <a href="/propuestas" class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] hover:text-white transition-colors mb-3 block">← Todas las propuestas</a>
-      <div class="text-5xl mb-4">{propuesta.icon}</div>
+      <a href="/propuestas" class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] hover:text-white transition-colors mb-4 block">← Todas las propuestas</a>
       <h1 class="font-montserrat font-black text-4xl md:text-5xl text-white uppercase tracking-tight leading-tight">
         {propuesta.titulo}
       </h1>
@@ -65,13 +64,13 @@ const next = idx < propuestas.length - 1 ? propuestas[idx + 1] : null;
         {prev ? (
           <a href={`/propuestas/${prev.slug}`}
              class="flex items-center gap-2 text-[#6A287F] hover:text-[#4e1a60] font-montserrat font-bold text-sm transition-colors">
-            ← {prev.icon} {prev.titulo}
+            ← {prev.titulo}
           </a>
         ) : <div />}
         {next && (
           <a href={`/propuestas/${next.slug}`}
              class="flex items-center gap-2 text-[#6A287F] hover:text-[#4e1a60] font-montserrat font-bold text-sm transition-colors text-right">
-            {next.icon} {next.titulo} →
+            {next.titulo} →
           </a>
         )}
       </div>

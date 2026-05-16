@@ -1,6 +1,5 @@
 export interface Propuesta {
   slug: string;
-  icon: string;
   titulo: string;
   intro: string[];
   items: string[];
@@ -11,7 +10,6 @@ export interface Propuesta {
 export const propuestas: Propuesta[] = [
   {
     slug: 'trabajo',
-    icon: '💼',
     titulo: 'Trabajo que se queda en Río Negro',
     intro: [
       'Río Negro produce fruta, petróleo, turismo. Y los jóvenes se van igual. Algo no cierra.',
@@ -28,7 +26,6 @@ export const propuestas: Propuesta[] = [
   },
   {
     slug: 'economia',
-    icon: '💰',
     titulo: 'Menos Estado en tu bolsillo',
     intro: [
       'Trabajás doce horas. El Estado se lleva la mitad. Eso tiene que cambiar.',
@@ -44,7 +41,6 @@ export const propuestas: Propuesta[] = [
   },
   {
     slug: 'educacion',
-    icon: '📚',
     titulo: 'Aulas que funcionan',
     intro: [
       'Río Negro tiene 39 escuelas rurales sin internet.',
@@ -62,7 +58,6 @@ export const propuestas: Propuesta[] = [
   },
   {
     slug: 'instituciones',
-    icon: '🏛️',
     titulo: 'Nadie nos compró',
     intro: [
       'Independientes de verdad. Sin compromisos viejos. Sin deudas con el aparato.',
@@ -79,7 +74,6 @@ export const propuestas: Propuesta[] = [
   },
   {
     slug: 'seguridad',
-    icon: '🛡️',
     titulo: 'Barrios donde se puede salir',
     intro: [
       'Seguridad no es mano dura de slogan. Es policía de cercanía, prevención con los adolescentes y una justicia que funciona.',
@@ -96,7 +90,6 @@ export const propuestas: Propuesta[] = [
   },
   {
     slug: 'ambiente',
-    icon: '🌿',
     titulo: 'Río Negro cuida lo que tiene',
     intro: [
       'La Patagonia es nuestro activo más valioso.',

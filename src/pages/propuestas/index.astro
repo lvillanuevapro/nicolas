@@ -2,16 +2,16 @@
 import Layout from '../../layouts/Layout.astro';
 
 const ejes = [
-  { icon: '💼', slug: 'trabajo',       titulo: 'Trabajo que se queda en Río Negro',   cierre: '"El que produce tiene que quedarse con lo que genera."' },
-  { icon: '💰', slug: 'economia',      titulo: 'Menos Estado en tu bolsillo',           cierre: '"Menos trabas. Más trabajo."' },
-  { icon: '📚', slug: 'educacion',     titulo: 'Aulas que funcionan',                   cierre: '"Estudiaste acá. Quedate acá."' },
-  { icon: '🏛️', slug: 'instituciones', titulo: 'Nadie nos compró',                      cierre: '"Nadie nos compró. Nadie nos puede pedir favores."' },
-  { icon: '🛡️', slug: 'seguridad',     titulo: 'Barrios donde se puede salir',          cierre: '"La inseguridad no se administra. Se combate."' },
-  { icon: '🌿', slug: 'ambiente',      titulo: 'Río Negro cuida lo que tiene',          cierre: '"Río Negro tiene todo. Solo le falta libertad para usarlo bien."' },
+  { slug: 'trabajo',       categoria: 'Trabajo',       accent: '#F97B00', titulo: 'Trabajo que se queda en Río Negro',  cierre: '"El que produce tiene que quedarse con lo que genera."' },
+  { slug: 'economia',      categoria: 'Economía',      accent: '#F97B00', titulo: 'Menos Estado en tu bolsillo',         cierre: '"Menos trabas. Más trabajo."' },
+  { slug: 'educacion',     categoria: 'Educación',     accent: '#6A287F', titulo: 'Aulas que funcionan',                 cierre: '"Estudiaste acá. Quedate acá."' },
+  { slug: 'instituciones', categoria: 'Instituciones', accent: '#6A287F', titulo: 'Nadie nos compró',                    cierre: '"Nadie nos compró. Nadie nos puede pedir favores."' },
+  { slug: 'seguridad',     categoria: 'Seguridad',     accent: '#55A3B2', titulo: 'Barrios donde se puede salir',        cierre: '"La inseguridad no se administra. Se combate."' },
+  { slug: 'ambiente',      categoria: 'Desarrollo',    accent: '#55A3B2', titulo: 'Río Negro cuida lo que tiene',        cierre: '"Río Negro tiene todo. Solo le falta libertad para usarlo bien."' },
 ];
 ---
 
-<Layout title="Propuestas — IMPULSO Río Negro" description="Trabajo, salud, educación, seguridad y producción. Lo que Río Negro necesita.">
+<Layout title="Propuestas — IMPULSO Río Negro" description="Trabajo, educación, seguridad, economía y producción. Lo que Río Negro necesita.">
 
   <div class="bg-[#6A287F] py-14 px-6">
     <div class="max-w-6xl mx-auto">
@@ -23,15 +23,15 @@ const ejes = [
   <div class="h-1 w-full" style="background:linear-gradient(90deg,#6A287F,#F97B00,#55A3B2)"></div>
 
   <section class="py-20 px-6">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-5">
       {ejes.map(e => (
         <a href={`/propuestas/${e.slug}`}
-           class="group flex gap-5 bg-white border border-gray-200 rounded-xl p-7 hover:shadow-lg hover:-translate-y-1 transition-all border-l-4 border-l-[#6A287F] no-underline">
-          <div class="w-12 h-12 rounded-lg bg-[#ede1f2] flex items-center justify-center text-2xl shrink-0">{e.icon}</div>
-          <div>
-            <h2 class="font-montserrat font-black text-[15px] uppercase tracking-wide text-[#6A287F] mb-2 leading-snug">{e.titulo}</h2>
-            <p class="text-gray-500 text-sm italic">{e.cierre}</p>
-          </div>
+           class="group block bg-white border border-gray-100 rounded-xl p-7 hover:shadow-md hover:-translate-y-0.5 transition-all no-underline overflow-hidden"
+           style={`border-top: 3px solid ${e.accent}`}>
+          <span class="font-montserrat font-bold text-[10px] uppercase tracking-widest block mb-3" style={`color: ${e.accent}`}>{e.categoria}</span>
+          <h2 class="font-montserrat font-black text-[17px] uppercase tracking-tight text-[#0E0B12] mb-3 leading-snug group-hover:text-[#6A287F] transition-colors">{e.titulo}</h2>
+          <p class="text-gray-400 text-sm italic leading-relaxed">{e.cierre}</p>
+          <span class="inline-block mt-4 font-montserrat font-bold text-[11px] uppercase tracking-widest text-gray-300 group-hover:text-[#6A287F] transition-colors">Leer propuesta →</span>
         </a>
       ))}
     </div>
