@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { propuestas } from '../../data/propuestas';
+
+export function getStaticPaths() {
+  return propuestas.map(p => ({ params: { slug: p.slug }, props: { propuesta: p } }));
+}
+
+const { propuesta } = Astro.props;
+const idx = propuestas.findIndex(p => p.slug === propuesta.slug);
+const prev = idx > 0 ? propuestas[idx - 1] : null;
+const next = idx < propuestas.length - 1 ? propuestas[idx + 1] : null;
+---
+
+<Layout
+  title={`${propuesta.titulo} — IMPULSO Río Negro`}
+  description={propuesta.intro[0]}
+>
+
+  <div class="bg-[#6A287F] py-14 px-6">
+    <div class="max-w-4xl mx-auto">
+      <a href="/propuestas" class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] hover:text-white transition-colors mb-3 block">← Todas las propuestas</a>
+      <div class="text-5xl mb-4">{propuesta.icon}</div>
+      <h1 class="font-montserrat font-black text-4xl md:text-5xl text-white uppercase tracking-tight leading-tight">
+        {propuesta.titulo}
+      </h1>
+    </div>
+  </div>
+  <div class="h-1 w-full" style="background:linear-gradient(90deg,#6A287F,#F97B00,#55A3B2)"></div>
+
+  <section class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Intro -->
+      <div class="mb-10">
+        {propuesta.intro.map(p => (
+          <p class="text-gray-700 text-lg leading-relaxed mb-4">{p}</p>
+        ))}
+      </div>
+
+      <!-- Lista de propuestas -->
+      <div class="bg-gray-50 rounded-xl p-8 mb-10">
+        <h2 class="font-montserrat font-black text-[13px] uppercase tracking-widest text-[#6A287F] mb-6">Lo que vamos a hacer</h2>
+        <ul class="space-y-4">
+          {propuesta.items.map(item => (
+            <li class="flex items-start gap-4">
+              <span class="w-6 h-6 rounded-full bg-[#6A287F] text-white flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                </svg>
+              </span>
+              <span class="text-gray-700 leading-relaxed">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Frase de cierre -->
+      <blockquote class="border-l-4 border-[#F97B00] pl-6 py-2 mb-12">
+        <p class="font-montserrat font-black text-2xl text-[#6A287F] leading-snug">{propuesta.cierre}</p>
+      </blockquote>
+
+      <!-- Navegación entre propuestas -->
+      <div class="flex justify-between gap-4 border-t border-gray-100 pt-8">
+        {prev ? (
+          <a href={`/propuestas/${prev.slug}`}
+             class="flex items-center gap-2 text-[#6A287F] hover:text-[#4e1a60] font-montserrat font-bold text-sm transition-colors">
+            ← {prev.icon} {prev.titulo}
+          </a>
+        ) : <div />}
+        {next && (
+          <a href={`/propuestas/${next.slug}`}
+             class="flex items-center gap-2 text-[#6A287F] hover:text-[#4e1a60] font-montserrat font-bold text-sm transition-colors text-right">
+            {next.icon} {next.titulo} →
+          </a>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="bg-[#ede1f2] py-12 px-6 text-center">
+    <h3 class="font-montserrat font-black text-2xl text-[#6A287F] uppercase mb-3">¿Compartís estas ideas?</h3>
+    <p class="text-gray-600 mb-6">Sumate a IMPULSO Río Negro y construyamos esto juntos.</p>
+    <a href="/sumate"
+       class="font-montserrat font-black text-[13px] uppercase tracking-widest bg-[#F97B00] hover:bg-orange-600 text-white px-10 py-4 rounded transition-colors">
+      Sumate
+    </a>
+  </div>
+
+</Layout>

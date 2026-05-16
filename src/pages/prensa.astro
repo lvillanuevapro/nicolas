@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Prensa — Nico Suárez Colman · IMPULSO Río Negro" description="Consultas de prensa, entrevistas y kit de material institucional de IMPULSO Río Negro.">
+
+  <div class="bg-[#6A287F] py-14 px-6">
+    <div class="max-w-6xl mx-auto">
+      <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] block mb-3">Prensa</span>
+      <h1 class="font-montserrat font-black text-5xl text-white uppercase tracking-tight">Prensa</h1>
+    </div>
+  </div>
+  <div class="h-1 w-full" style="background:linear-gradient(90deg,#6A287F,#F97B00,#55A3B2)"></div>
+
+  <section class="py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+
+      <!-- Contacto -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mb-16">
+        <div>
+          <h2 class="font-montserrat font-black text-2xl text-[#6A287F] uppercase mb-4">Contacto de prensa</h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Para consultas de prensa, entrevistas o material institucional de IMPULSO Río Negro, escribinos a:
+          </p>
+          <a href="mailto:nsuarezcolman@gmail.com"
+             class="inline-block font-montserrat font-bold text-[#6A287F] border-2 border-[#6A287F] hover:bg-[#6A287F] hover:text-white px-6 py-3 rounded transition-colors text-sm uppercase tracking-wider">
+            nsuarezcolman@gmail.com
+          </a>
+          <p class="text-gray-400 text-sm mt-4">Respondemos en menos de 24 horas.</p>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-7" id="kit">
+          <h3 class="font-montserrat font-black text-[13px] uppercase tracking-widest text-[#6A287F] mb-5">Kit de prensa</h3>
+          <ul class="space-y-3">
+            {[
+              'Fotos de alta resolución de Nicolás Suárez Colman',
+              'Logo de IMPULSO Río Negro (PNG y SVG)',
+              'Biografía oficial',
+              'Propuestas programáticas en PDF',
+            ].map(item => (
+              <li class="flex items-start gap-3">
+                <span class="w-5 h-5 rounded-full bg-[#ede1f2] text-[#6A287F] flex items-center justify-center shrink-0 mt-0.5 text-xs font-bold">→</span>
+                <span class="text-gray-600 text-sm">{item}</span>
+              </li>
+            ))}
+          </ul>
+          <a href="mailto:nsuarezcolman@gmail.com?subject=KIT DE PRENSA"
+             class="mt-6 block text-center font-montserrat font-bold text-[12px] uppercase tracking-widest text-white bg-[#F97B00] hover:bg-orange-600 py-3 rounded transition-colors">
+            Solicitar kit de prensa
+          </a>
+        </div>
+      </div>
+
+      <!-- Datos del candidato -->
+      <div class="border-t border-gray-100 pt-12">
+        <h2 class="font-montserrat font-black text-2xl text-[#6A287F] uppercase mb-6">Datos del candidato</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            ['Nombre completo', 'Nicolás Suárez Colman'],
+            ['Cargo', 'Presidente de IMPULSO Río Negro'],
+            ['Profesión', 'Abogado (UNLP + posgrado UNCo)'],
+            ['Domicilio político', 'General Roca, Río Negro'],
+            ['Partido', 'IMPULSO Río Negro'],
+            ['Web del partido', 'impulsorionegro.ar'],
+          ].map(([label, val]) => (
+            <div class="flex gap-3 py-3 border-b border-gray-50">
+              <span class="font-montserrat font-bold text-[11px] uppercase tracking-wide text-[#55A3B2] w-36 shrink-0 pt-0.5">{label}</span>
+              <span class="text-gray-700 text-sm">{val}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</Layout>

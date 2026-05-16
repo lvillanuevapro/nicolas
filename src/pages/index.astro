@@ -1,0 +1,150 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const propuestas = [
+  { icon: '💼', titulo: 'Trabajar tiene que alcanzar', texto: 'Reforma fiscal provincial para que el que produce se quede con lo que genera.', href: '/propuestas/trabajo' },
+  { icon: '🏥', titulo: 'Salud cerca de casa', texto: 'Guardia 24/7 en centros regionales. Telemedicina. Menos burocracia, más prestaciones.', href: '/propuestas/salud' },
+  { icon: '📚', titulo: 'Aulas que funcionan', texto: 'Internet en escuelas rurales. Docentes valorados. Mérito, no política.', href: '/propuestas/educacion' },
+  { icon: '🛡️', titulo: 'Barrios donde se puede salir', texto: 'Policía de cercanía, prevención y justicia que funciona.', href: '/propuestas/seguridad' },
+  { icon: '🌿', titulo: 'Río Negro tiene todo', texto: 'Solo le falta libertad para usarlo. Menos trabas. Más trabajo.', href: '/propuestas/produccion' },
+  { icon: '🏛️', titulo: 'No le debemos nada a nadie', texto: 'Independientes de verdad. Nadie nos compró. Nadie nos puede pedir favores.', href: '/propuestas/instituciones' },
+];
+---
+
+<Layout title="Nico Suárez Colman · IMPULSO Río Negro" description="Presidente de IMPULSO Río Negro. Liberal, rionegrino, abogado. Propuestas para la provincia.">
+
+  <!-- HERO -->
+  <section class="relative min-h-[580px] flex items-center overflow-hidden"
+           style="background: linear-gradient(135deg, #4e1a60 0%, #6A287F 60%, #8b35a8 100%)">
+    <div class="absolute inset-0 opacity-[0.04]"
+         style="background-image: repeating-linear-gradient(45deg, white 0px, white 1px, transparent 1px, transparent 40px)">
+    </div>
+    <div class="absolute right-0 top-0 w-1.5 h-full bg-[#F97B00]"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 py-20 w-full grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#F97B00]"></span>
+          <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-white/90">Presidente · Impulso Río Negro</span>
+        </div>
+        <h1 class="font-montserrat font-black text-5xl md:text-6xl text-white uppercase leading-[1.05] tracking-tight mb-5">
+          Río Negro<br>toma <span class="text-[#F97B00]">impulso.</span>
+        </h1>
+        <p class="text-white/80 text-lg leading-relaxed mb-8 max-w-lg">
+          Soy de los que no se resignan. Por eso construimos IMPULSO Río Negro: para que el cambio sea nuestro, acá en la provincia.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/sumate"
+             class="font-montserrat font-black text-[13px] uppercase tracking-widest bg-[#F97B00] hover:bg-orange-600 text-white px-8 py-4 rounded transition-colors">
+            Sumate
+          </a>
+          <a href="https://impulsorionegro.ar" target="_blank" rel="noopener"
+             class="font-montserrat font-bold text-[12px] uppercase tracking-wider border-2 border-white/50 hover:border-white hover:bg-white/10 text-white px-7 py-3.5 rounded transition-colors">
+            Conocé el partido ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="hidden md:flex justify-center items-end">
+        <div class="w-72 h-96 rounded-t-lg border-2 border-white/15 bg-white/8 flex flex-col items-center justify-center gap-3 text-white/40 text-center px-6 relative">
+          <span class="text-5xl opacity-40">📷</span>
+          <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest">Foto de Nico</span>
+          <span class="text-[11px] leading-relaxed opacity-70">Al aire libre · mirando a cámara · contexto rionegrino</span>
+          <div class="absolute bottom-0 left-0 right-0 h-1" style="background:linear-gradient(90deg,#6A287F,#F97B00)"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRASE -->
+  <div class="bg-[#6A287F] py-10 px-6 text-center">
+    <blockquote class="font-montserrat font-black text-2xl md:text-3xl text-white max-w-3xl mx-auto leading-snug tracking-tight">
+      "Sin compromisos viejos. Sin deudas políticas.<br>
+      <span class="text-[#F97B00]">Liberal de acá.</span> Eso somos."
+    </blockquote>
+  </div>
+
+  <!-- PROPUESTAS -->
+  <section class="py-20 px-6">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] block mb-3">Propuestas</span>
+        <h2 class="font-montserrat font-black text-4xl text-[#6A287F] uppercase tracking-tight">Lo que necesita Río Negro</h2>
+        <p class="text-gray-500 mt-3 max-w-xl mx-auto">Lo que Río Negro necesita, lo sabemos los que vivimos en Río Negro.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {propuestas.map(p => (
+          <a href={p.href}
+             class="group block bg-white border border-gray-200 rounded-xl p-7 hover:shadow-lg hover:-translate-y-1 transition-all border-t-4 border-t-transparent hover:border-t-[#6A287F] no-underline">
+            <div class="w-11 h-11 rounded-lg bg-[#ede1f2] flex items-center justify-center text-xl mb-4">{p.icon}</div>
+            <h3 class="font-montserrat font-black text-[14px] uppercase tracking-wide text-[#6A287F] mb-2 leading-snug">{p.titulo}</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">{p.texto}</p>
+          </a>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/propuestas"
+           class="font-montserrat font-bold text-[12px] uppercase tracking-widest text-[#6A287F] border-2 border-[#6A287F] hover:bg-[#6A287F] hover:text-white px-8 py-3 rounded transition-colors">
+          Ver todas las propuestas
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NICO -->
+  <section class="bg-gray-50 py-20 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div class="relative">
+        <div class="w-full aspect-[4/5] rounded-xl bg-[#ede1f2] border-2 border-dashed border-[#6A287F]/30 flex flex-col items-center justify-center gap-3 text-[#6A287F]">
+          <span class="text-6xl opacity-40">🧑‍⚖️</span>
+          <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest opacity-60">Foto de Nico</span>
+          <span class="text-xs opacity-50 text-center max-w-[180px]">Con gente, en recorrida, contexto rionegrino</span>
+        </div>
+        <div class="absolute -bottom-4 -right-4 bg-[#F97B00] text-white font-montserrat font-black text-[11px] uppercase tracking-wider px-5 py-3 rounded shadow-lg">
+          Presidente · IMPULSO RN
+        </div>
+      </div>
+
+      <div>
+        <span class="font-montserrat font-bold text-[11px] uppercase tracking-widest text-[#F97B00] block mb-3">Conoceme</span>
+        <h2 class="font-montserrat font-black text-4xl text-[#6A287F] uppercase tracking-tight mb-6">Quién soy</h2>
+        <p class="text-gray-600 leading-relaxed mb-4">Soy Nico Suárez Colman. Abogado, rionegrino, 37 años.</p>
+        <p class="text-gray-600 leading-relaxed mb-4">Nací y crecí en General Roca. Trabajé de mozo, de repartidor, de gastronómico — antes de dedicarme al derecho. Mis viejos tenían dos trabajos para darme la oportunidad de estudiar.</p>
+        <p class="text-gray-600 leading-relaxed mb-8">Fundé IMPULSO Río Negro. Ganamos la personería. Construimos este espacio desde cero, sin aparato y sin deudas. Ahora vamos por la Legislatura.</p>
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          {[
+            ['Ubicación', 'General Roca, Río Negro'],
+            ['Profesión', 'Abogado — UNLP + UNCo'],
+            ['Cargo', 'Presidente IMPULSO RN'],
+            ['Edad', '37 años'],
+          ].map(([label, val]) => (
+            <div class="bg-white p-3 rounded-lg border-l-4 border-[#55A3B2]">
+              <span class="font-montserrat font-bold text-[10px] uppercase tracking-widest text-[#55A3B2] block">{label}</span>
+              <span class="text-sm font-semibold text-[#0E0B12]">{val}</span>
+            </div>
+          ))}
+        </div>
+        <a href="/conoceme"
+           class="font-montserrat font-bold text-[12px] uppercase tracking-widest text-white bg-[#6A287F] hover:bg-[#4e1a60] px-8 py-3 rounded transition-colors">
+          Leer más
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAGLINE OSCURO -->
+  <div class="relative overflow-hidden py-16 px-6 text-center"
+       style="background: linear-gradient(135deg, #0E0B12 0%, #1a0f20 100%)">
+    <div class="absolute top-0 left-0 right-0 h-1"
+         style="background: linear-gradient(90deg, #6A287F, #F97B00, #55A3B2)"></div>
+    <h2 class="font-montserrat font-black text-4xl md:text-5xl text-white uppercase tracking-tight mb-2">
+      Río Negro necesita un <span class="text-[#F97B00]">impulso.</span>
+    </h2>
+    <p class="text-white/50 mb-8">IMPULSO Río Negro puede darlo.</p>
+    <a href="/sumate"
+       class="font-montserrat font-black text-[13px] uppercase tracking-widest bg-[#F97B00] hover:bg-orange-600 text-white px-10 py-4 rounded transition-colors">
+      Sumate al partido
+    </a>
+  </div>
+
+</Layout>
